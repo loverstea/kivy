@@ -4,7 +4,7 @@
         spacing: "20sp"
 
         MDScrollView:
-            md_bg_color: app.theme_cls.primary_color
+            
             pos_hint:{'center_x': 0.5, 'center_y': 0.5}
             size_hint:.9,.8
             MDList:
@@ -36,6 +36,7 @@
             
         MDTextField:
             hint_text: "No helper text"
+            id: task_text
             size_hint_x: 0.9
             pos_hint:{'center_x': 0.5}
         MDBoxLayout:
@@ -73,10 +74,11 @@
     id: task_item
     markup: True
 
-    LeftCheckBox:
-        id: chech
-    IconRightWedget:
+    LeftCheckbox:
+        id: check
+    IconRightWidget:
         icon: 'delete-restore'
         theme_text_color: "Custom"
         text_color: 1, 0,0, 1
+
 
