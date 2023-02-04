@@ -9,19 +9,14 @@ class TaskListScreen(Screen):
 
 
 class NewTaskScreen(Screen):
-    ...
-class Example(MDApp):
-    data = {
-        'Python': 'language-python',
-        'PHP': 'language-php',
-        'C++': 'language-cpp',
-    }
+    def back(self):
+        self.manager.current = "main_screen"
+        self.manager.transition.direction = "down"
+        self.manager.transition.duration = 0.6
+
+
+    
 class ToDoApp(MDApp):
-    data = {
-            'Python': 'language-python',
-            'PHP': 'language-php',
-            'C++': 'language-cpp',
-        }
 
     def build(self):
         self.theme_cls.theme_style = "Dark"
