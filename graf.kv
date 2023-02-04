@@ -6,9 +6,51 @@
             md_bg_color: 0, 1, 0, 1
             MDTopAppBar:
                 title: "Title"
-                icon: "git"
+                icon: "emoticon-angry"
                 type: "bottom"
-                left_action_items: [["menu", lambda x: x]]
-                on_action_button: app.callback(self.icon)
                 mode: "end"
                 icon_color: 0, 0, 0, 1
+                on_action_button:
+                    root.manager.current = "second_screen"
+                    root.manager.transition.direction = "up"
+                    root.manager.transition.duration = 0.6
+
+    
+<NewTaskScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20sp"
+        size_hint: (1, 0.8)
+        pos_hint:{'center_x': 0.5}
+        MDTopAppBar:
+            title: "Нове завдання"
+            anchor_title: "left"
+            
+        MDTextField:
+            hint_text: "No helper text"
+            size_hint_x: 0.9
+            pos_hint:{'center_x': 0.5}
+        MDBoxLayout:
+            orientation: "horizontal"
+            MDLabel:
+                text: "Зробити до"
+                size_hint_x: 0.3
+            MDIconButton:
+                icon: "calendar-alert-outline"
+                pos_hint: {'y': 0.5}
+                size_hint_x: 0.2
+                valigh: "top"
+            MDLabel:
+                text: "дата"
+                size_hint_x: 0.5
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_x: .9
+            pos_hint:{'center_x': 0.5}
+            
+            MDRaisedButton:
+                text: "Save"
+            
+            MDFlatButton:
+                on_release: root.back()
+                text:  "Скасувати"
