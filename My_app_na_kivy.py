@@ -41,13 +41,14 @@ class ToDoApp(MDApp):
         sm.add_widget(self.screen)
         sm.add_widget(NewTaskScreen(name="second_screen"))
         return sm
-    def add_task(self):
-        new_task = TaskItem(text= text ,secondary_text=date )
+    def add_task(self, text, date):
+        new_task = TaskItem(text=text , secondary_text=date)
         self.screen.ids.task_list.add_widget(new_task)
-        self.screen.manager.transition.duration = 0.6
         self.screen.manager.transition.direction = "down"
+        self.screen.manager.transition.duration = 0.6
         self.screen.manager.current = "main_screen"
         
 
 app = ToDoApp()
 app.run()
+
