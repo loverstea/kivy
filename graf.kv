@@ -2,6 +2,13 @@
     MDBoxLayout:
         orientation: "vertical"
         spacing: "20sp"
+
+        MDScrollView:
+            md_bg_color: app.theme_cls.primary_color
+            pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+            size_hint:.9,.8
+            MDList:
+                id:task_list
         MDBottomAppBar:
             md_bg_color: 0, 1, 0, 1
             MDTopAppBar:
@@ -14,6 +21,7 @@
                     root.manager.current = "second_screen"
                     root.manager.transition.direction = "up"
                     root.manager.transition.duration = 0.6
+        
 
     
 <NewTaskScreen>:
@@ -21,7 +29,7 @@
         orientation: "vertical"
         spacing: "20sp"
         size_hint: (1, 0.8)
-        pos_hint:{'center_x': 0.5}
+        pos_hint:{'center_x': 0.5, 'y': .2}
         MDTopAppBar:
             title: "Нове завдання"
             anchor_title: "left"
@@ -32,25 +40,43 @@
             pos_hint:{'center_x': 0.5}
         MDBoxLayout:
             orientation: "horizontal"
+            size_hint_x: 0.9
+            pos_hint:{'center_x': 0.5}
             MDLabel:
                 text: "Зробити до"
                 size_hint_x: 0.3
+                pos_hint: {'y': 0.2}
+                valigh: "top"
             MDIconButton:
                 icon: "calendar-alert-outline"
-                pos_hint: {'y': 0.5}
+                pos_hint: {'y': 0.55}
                 size_hint_x: 0.2
                 valigh: "top"
+                on_release:root.show_date_picker()
             MDLabel:
-                text: "дата"
                 size_hint_x: 0.5
+                pos_hint: {'y': 0.2}
+                id: date_text
+                valigh: "top"
         MDBoxLayout:
             orientation: "vertical"
-            size_hint_x: .9
-            pos_hint:{'center_x': 0.5}
             
             MDRaisedButton:
                 text: "Save"
+                on_release: app.add_task(task_text.text, date_text.text)
             
             MDFlatButton:
                 on_release: root.back()
                 text:  "Скасувати"
+
+<TaskItem>:
+    id: task_item
+    markup: True
+
+    LeftCheckBox:
+        id: chech
+    IconRightWedget:
+        icon: 'delete-restore'
+        theme_text_color: "Custom"
+        text_color: 1, 0,0, 1
+
