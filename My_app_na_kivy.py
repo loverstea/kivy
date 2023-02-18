@@ -63,15 +63,15 @@ class ToDoApp(MDApp):
         for i in keys:
             if self.db.exists(i):
                 self.tasks.append(self.db.get(i))
-                new_task = TaskItem(key = i, text=self.tasks[-1]['task'], secondary_text=self.task_list.add_widget(new_tasks))
+                new_task = TaskItem(key = i, text=self.tasks[-1]['task'], secondary_text=self.tasks[-1]['date'])
                 self.screen.ids.task_list.add_widget(new_task)
     
     def add_task(self, text, date):
         if text != "":
             new_task = TaskItem(key = len(self.tasks), text=text , secondary_text=date)
-            self.screen.ids.tasks_list.add_widget(new_task)
+            self.screen.ids.task_list.add_widget(new_task)
             self.screen.manager.transition.direction = "down"
-            self.screen.manager.transition.duration = 0.6
+            self.screen.manager.transition.duration = 0.7
             self.screen.manager.current = "main_screen"
         else:
             self.dialog = MDDialog(
