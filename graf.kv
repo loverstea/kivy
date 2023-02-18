@@ -8,7 +8,8 @@
             pos_hint:{'center_x': 0.5, 'center_y': 0.5}
             size_hint:.9,.8
             MDList:
-                id:task_list
+                id: task_list
+
         MDBottomAppBar:
             md_bg_color: 0, 1, 0, 1
             MDTopAppBar:
@@ -28,7 +29,7 @@
     MDBoxLayout:
         orientation: "vertical"
         spacing: "20sp"
-        size_hint: (1, 0.8)
+        size_hint: 1, 0.8
         pos_hint:{'center_x': 0.5, 'y': .2}
         MDTopAppBar:
             title: "Нове завдання"
@@ -39,6 +40,7 @@
             id: task_text
             size_hint_x: 0.9
             pos_hint:{'center_x': 0.5}
+            mode: "fill"
         MDBoxLayout:
             orientation: "horizontal"
             size_hint_x: 0.9
@@ -81,5 +83,3 @@
         theme_text_color: "Custom"
         text_color: 1, 0,0, 1
         on_release: root.delete_task(task_item)
-
-
